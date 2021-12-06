@@ -1,0 +1,15 @@
+@0   = ~Patching all scripts except NoAction() blocks - chose this when installing the first time (Installation could take a while!)~
+@1   = ~Patching all scripts and scriptblocks - this will take a while!~
+@2   = ~Stutter Debug Tool~
+@3   = ~Tutu without BG2 Fixpack detected.~ 
+@4   = ~BG2/BGT without BG2 Fixpack detected.~
+@5   = ~BG:EE detected.~
+@6   = ~SoD detected.~
+@7   = ~EET detected.~
+@8   = ~IWD:EE detected.~
+@9   = ~PST:EE detected.~
+@10  = ~IWD detected.~ 
+@11  = ~PST detected.~
+@12  = ~IWDII detected.~ 
+@13   = ~Tutu with BG2 Fixpack detected.~ 
+@14   = ~BG2/BGT with BG2 Fixpack detected.~
