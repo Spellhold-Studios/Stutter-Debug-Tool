@@ -1,5 +1,5 @@
 # Stutter Debug Tool
-A help to debug script malfunctions in IE games.
+A help to identify looping scripts in IE games.
 
 The Stutter Debug Tool is to help debug script malfunctions in the game. For example, if an NPC "stutters", i.e. only walks a few steps and constantly terminates any actions, or if the NPC's PID (player initiated dialogue) pops up repeatedly.
 Also, if the game experiences a lag which could be caused by a looping script.
