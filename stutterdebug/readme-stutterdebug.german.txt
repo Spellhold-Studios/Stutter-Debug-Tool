@@ -32,7 +32,7 @@ LINKS
 
 (Englisch) Tutorial about how to gather clues when debugging stuttering from the bigg: http://www.shsforums.net/topic/33937-how-to-gather-clues-when-debugging-stuttering/
 
-(Englisch) Tutorial from Karno Mikkola (the tool version from that post was taken and modified for this Stutter Debug Tool):
+(Englisch) Tutorial from Jarno Mikkola (the tool version from that post was taken and modified for this Stutter Debug Tool):
 http://www.shsforums.net/topic/41036-faq-for-the-megamods/?p=504055
 
 Tutorial über Stutter Debugging von Ascalon:
@@ -49,6 +49,9 @@ Jarno Mikkola - tool pre-versions and debug guide
 Ascalon - tool pre-versions and debug guide (German)
 
 HISTORY
+
+Version 3.1:
+-typo correction.
 
 Version 3:
 -Removed "ActionOverride(Player1" from text output to make it more stable ingame.
