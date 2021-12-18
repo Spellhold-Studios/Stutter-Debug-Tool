@@ -1,7 +1,7 @@
 BACKUP ~stutterdebug/backup~
 AUTHOR ~Jarno Mikkola & jastey~
 
-VERSION ~3~ //211205
+VERSION ~3.1~ 
 
 
 AUTO_TRA ~stutterdebug/tra/%s~
