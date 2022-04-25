@@ -57,7 +57,7 @@ BEGIN
     END
 
 
-    ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~sod~) THEN BEGIN
+    ACTION_IF (GAME_IS ~bgee~) THEN BEGIN
       ACTION_IF (GAME_INCLUDES ~sod~) BEGIN
         PRINT @6 /* ~SoD detected.~ */
       END ELSE BEGIN
