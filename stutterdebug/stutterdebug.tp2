@@ -1,22 +1,66 @@
-BACKUP ~stutterdebug/backup~
-AUTHOR ~Jarno Mikkola & jastey~
+BACKUP ~weidu_external/backup/stutterdebug~
+SUPPORT ~https://github.com/SpellholdStudios/Stutter_Debug_Tool~
 
-VERSION ~3.1~ 
-
+VERSION ~3.1~
 
 AUTO_TRA ~stutterdebug/tra/%s~
 
+
 ALWAYS
 
-ACTION_DEFINE_ARRAY C#reload BEGIN setup END
+  // required because of non-standard BACKUP path
+  OUTER_TEXT_SPRINT MOD_FOLDER ~stutterdebug~
+  // root folder for mutable data
+  OUTER_TEXT_SPRINT WORK_FOLDER ~weidu_external~
 
+  ACTION_IF ((FILE_EXISTS ~dlc/sod-dlc.zip~) OR (FILE_EXISTS ~sod-dlc.zip~)) THEN BEGIN
+    FAIL @100 // DLC Merger is required before mods can be installed on this game.
+  END
+
+
+  ACTION_DEFINE_ARRAY ~C#noconvert~ BEGIN ~setup~ END
+  ACTION_DEFINE_ARRAY ~C#reload~    BEGIN ~mod~   END
   LAF HANDLE_CHARSETS
     INT_VAR
-      infer_charsets = 1
+      from_utf8       = 1  // conversion: UTF8 -> ANSI
+      infer_charsets  = 1
     STR_VAR
-      tra_path = ~stutterdebug/tra~
-      reload_array = C#reload
+      tra_path        = EVAL ~%MOD_FOLDER%/tra~
+      out_path        = EVAL ~%WORK_FOLDER%/lang/%MOD_FOLDER%~
+      noconvert_array = ~C#noconvert~
+      reload_array    = ~C#reload~
   END
+
+
+  // List of broken scripts (BG1, non-bg2fixed BG2)
+  ACTION_IF (GAME_IS ~bg1 totsc~ OR
+             GAME_IS ~tutu tutu_totsc bg2 bgt tob~ AND NOT MOD_IS_INSTALLED ~setup-bg2fixpack.TP2~ "0") BEGIN
+    ACTION_DEFINE_ASSOCIATIVE_ARRAY broken_script BEGIN
+      ~RDOG~      => 1
+      ~RDWARF~    => 1
+      ~RETTER~    => 1
+      ~RGIBBLER~  => 1
+      ~RHALFLIN~  => 1
+      ~RHOBGOBA~  => 1
+      ~RHOBGOBF~  => 1
+      ~RKOBOLD~   => 1
+      ~ROGRE~     => 1
+      ~RSIREN~    => 1
+      ~RSIRINE~   => 1
+    END
+  END
+
+  // List of broken scripts (IWD2)
+  ACTION_IF (GAME_IS ~iwd2~) BEGIN
+    ACTION_DEFINE_ASSOCIATIVE_ARRAY broken_script BEGIN
+      ~TESTOCLE~  => 1
+      ~TEST_01~   => 1
+      ~TEST_02~   => 1
+      ~TEST_03~   => 1
+    END
+  END
+
+  INCLUDE ~%MOD_FOLDER%/lib/functions.tph~
 
 END
 
@@ -24,194 +68,38 @@ END
 LANGUAGE ~Deutsch~
          ~german~   
          ~stutterdebug/tra/german/setup.tra~
+         ~stutterdebug/tra/german/mod.tra~
 
 LANGUAGE ~English~
          ~english~  
          ~stutterdebug/tra/english/setup.tra~ 
+         ~stutterdebug/tra/english/mod.tra~ 
+
 
 BEGIN @0 /* ~Patching all scripts except NoAction() blocks - chose this when installing the first time (Installation could take a while!)~ */
 
 SUBCOMPONENT @2 /* ~Stutter Debug Tool~ */
 DESIGNATED 1
 
-ACTION_IF (GAME_IS ~tutu tutu_totsc bg2 bgt tob~ AND NOT MOD_IS_INSTALLED ~setup-bg2fixpack.TP2~ "0") THEN BEGIN
+LAF SHOW_GAME_INFO END
 
-ACTION_IF GAME_IS ~tutu tutu_totsc~ THEN BEGIN
-  PRINT @3 /* ~Tutu without BG2 Fixpack detected.~ */
-END
-
-ACTION_IF GAME_IS ~bgt bg2 tob~ THEN BEGIN
-  PRINT @4 /* ~BG2/BGT without BG2 Fixpack detected.~ */
-END
-
-//skipping the 11 originally broken scripts
-COPY_EXISTING_REGEXP GLOB ~.+\.bcs~ override 
-  PATCH_IF NOT (~%SOURCE_RES%~ STRING_EQUAL_CASE ~RDOG~ OR
-                ~%SOURCE_RES%~ STRING_EQUAL_CASE ~RDWARF~ OR
-                ~%SOURCE_RES%~ STRING_EQUAL_CASE ~RETTER~ OR
-                ~%SOURCE_RES%~ STRING_EQUAL_CASE ~RGIBBLER~ OR
-                ~%SOURCE_RES%~ STRING_EQUAL_CASE ~RHALFLIN~ OR
-                ~%SOURCE_RES%~ STRING_EQUAL_CASE ~RHOBGOBA~ OR
-                ~%SOURCE_RES%~ STRING_EQUAL_CASE ~RHOBGOBF~ OR
-                ~%SOURCE_RES%~ STRING_EQUAL_CASE ~RKOBOLD~ OR
-                ~%SOURCE_RES%~ STRING_EQUAL_CASE ~ROGRE~ OR
-                ~%SOURCE_RES%~ STRING_EQUAL_CASE ~RSIREN~ OR
-                ~%SOURCE_RES%~ STRING_EQUAL_CASE ~RSIRINE~) THEN BEGIN
-    DECOMPILE_AND_PATCH BEGIN 
-    x = 0
-    REPLACE_EVALUATE ~\(RESPONSE #[0-9]+[%WNL%%LNL%%MNL%][ %TAB%]+\([^ %TAB%%WNL%%LNL%%MNL%]+\)\)~ BEGIN
-	SPRINT debug ~~
-      PATCH_IF ~%MATCH2%~ STR_CMP ~NoAction()~ BEGIN
-        x += 1
-        SPRINT debug ~~~~~DisplayStringHead(Myself,~Running block %x% of %SOURCE_RES%.BCS~)~~~~~
-      END
-    END ~\1 %debug%~
-    END
-END
-BUT_ONLY
-
-END ELSE BEGIN
-
-ACTION_IF GAME_IS ~tutu tutu_totsc~ THEN BEGIN
-  PRINT @13 /* ~Tutu with BG2 Fixpack detected.~ */
-END
-
-ACTION_IF GAME_IS ~bgt bg2 tob~ THEN BEGIN
-  PRINT @14 /* ~BG2/BGT with BG2 Fixpack detected.~ */
-END
-
-
-ACTION_IF (GAME_IS ~bgee~ AND NOT FILE_EXISTS_IN_GAME ~bd0103.are~) THEN BEGIN
-  PRINT @5 /* ~BG:EE detected.~ */
-END
-
-ACTION_IF (GAME_IS ~bgee~ AND FILE_EXISTS_IN_GAME ~bd0103.are~) THEN BEGIN
-  PRINT @6 /* ~SoD detected.~ */
-END
-
-ACTION_IF GAME_IS ~eet~ THEN BEGIN
-  PRINT @7 /* ~EET detected.~ */
-END
-
-ACTION_IF GAME_IS ~iwdee~ THEN BEGIN
-  PRINT @8 /* ~IWD:EE detected.~ */
-END
-
-ACTION_IF GAME_IS ~pstee~ THEN BEGIN
-  PRINT @9  /* ~PST:EE detected.~ */
-END
-
-ACTION_IF GAME_IS ~iwd~ THEN BEGIN
-  PRINT @10 /* ~IWD detected.~ */
-END
-
-ACTION_IF GAME_IS ~pst~ THEN BEGIN
-  PRINT @11 /* ~PST detected.~ */
-END
-
-ACTION_IF GAME_IS ~iwd2~ THEN BEGIN
-  PRINT @12  /* ~IWDII detected.~ */
-END
-
-COPY_EXISTING_REGEXP GLOB ~.+\.bcs~ override
-  DECOMPILE_AND_PATCH BEGIN
-    x = 0
-    REPLACE_EVALUATE ~\(RESPONSE #[0-9]+[%WNL%%LNL%%MNL%][ %TAB%]+\([^ %TAB%%WNL%%LNL%%MNL%]+\)\)~ BEGIN
-	SPRINT debug ~~
-      PATCH_IF ~%MATCH2%~ STR_CMP ~NoAction()~ BEGIN
-        x += 1
-        SPRINT debug ~~~~~DisplayStringHead(Myself,~Running block %x% of %SOURCE_RES%.BCS~)~~~~~
-      END
-    END ~\1 %debug%~
+COPY_EXISTING_REGEXP GLOB ~.+\.bcs~ ~override~
+  TO_UPPER ~SOURCE_RES~
+  PATCH_IF (NOT VARIABLE_IS_SET $broken_script(~%SOURCE_RES%~)) BEGIN
+    LPF patch_script INT_VAR patch_all = 0 END
   END
 BUT_ONLY
-
-
-END
-
 
 
 BEGIN @1 /* ~Patching all scripts and scriptblocks - this will take a while!~ */
 SUBCOMPONENT @2 /* ~Stutter Debug Tool~ */
 DESIGNATED 2
 
-ACTION_IF (GAME_IS ~tutu tutu_totsc bg2 bgt tob~ AND NOT MOD_IS_INSTALLED ~setup-bg2fixpack.TP2~ "0") THEN BEGIN
+LAF SHOW_GAME_INFO END
 
-ACTION_IF GAME_IS ~tutu tutu_totsc~ THEN BEGIN
-  PRINT @3 /* ~Tutu without BG2 Fixpack detected.~ */
-END
-
-ACTION_IF GAME_IS ~bgt bg2 tob~ THEN BEGIN
-  PRINT @4 /* ~BG2/BGT without BG2 Fixpack detected.~ */
-END
-
-
-//skipping the 11 originally broken scripts
-COPY_EXISTING_REGEXP GLOB ~.*\.bcs$~ ~override~ 
-  PATCH_IF NOT (~%SOURCE_RES%~ STRING_EQUAL_CASE ~RDOG~ OR
-                ~%SOURCE_RES%~ STRING_EQUAL_CASE ~RDWARF~ OR
-                ~%SOURCE_RES%~ STRING_EQUAL_CASE ~RETTER~ OR
-                ~%SOURCE_RES%~ STRING_EQUAL_CASE ~RGIBBLER~ OR
-                ~%SOURCE_RES%~ STRING_EQUAL_CASE ~RHALFLIN~ OR
-                ~%SOURCE_RES%~ STRING_EQUAL_CASE ~RHOBGOBA~ OR
-                ~%SOURCE_RES%~ STRING_EQUAL_CASE ~RHOBGOBF~ OR
-                ~%SOURCE_RES%~ STRING_EQUAL_CASE ~RKOBOLD~ OR
-                ~%SOURCE_RES%~ STRING_EQUAL_CASE ~ROGRE~ OR
-                ~%SOURCE_RES%~ STRING_EQUAL_CASE ~RSIREN~ OR
-                ~%SOURCE_RES%~ STRING_EQUAL_CASE ~RSIRINE~) THEN BEGIN
-    DECOMPILE_AND_PATCH BEGIN 
-	x = 0
-        REPLACE_EVALUATE ~\(RESPONSE #[0-9]+\)~ BEGIN
-                        x += 1
-                END ~~~~~\1
-        DisplayStringHead(Myself,~Running block %x% of %SOURCE_RES%.BCS~)~~~~~
-    END
-END
+COPY_EXISTING_REGEXP GLOB ~.+\.bcs~ ~override~ 
+  TO_UPPER ~SOURCE_RES~
+  PATCH_IF (NOT VARIABLE_IS_SET $broken_script(~%SOURCE_RES%~)) BEGIN
+    LPF patch_script INT_VAR patch_all = 1 END
+  END
 BUT_ONLY
-
-END ELSE BEGIN
-
-ACTION_IF (GAME_IS ~bgee~ AND NOT FILE_EXISTS_IN_GAME ~bd0103.are~) THEN BEGIN
-  PRINT @5 /* ~BG:EE detected.~ */
-END
-
-ACTION_IF (GAME_IS ~bgee~ AND FILE_EXISTS_IN_GAME ~bd0103.are~) THEN BEGIN
-  PRINT @6 /* ~SoD detected.~ */
-END
-
-ACTION_IF GAME_IS ~eet~ THEN BEGIN
-  PRINT @7 /* ~EET detected.~ */
-END
-
-ACTION_IF GAME_IS ~iwdee~ THEN BEGIN
-  PRINT @8 /* ~IWD:EE detected.~ */
-END
-
-ACTION_IF GAME_IS ~pstee~ THEN BEGIN
-  PRINT @9  /* ~PST:EE detected.~ */
-END
-
-ACTION_IF GAME_IS ~iwd~ THEN BEGIN
-  PRINT @10 /* ~IWD detected.~ */
-END
-
-ACTION_IF GAME_IS ~pst~ THEN BEGIN
-  PRINT @11 /* ~PST detected.~ */
-END
-
-ACTION_IF GAME_IS ~iwd2~ THEN BEGIN
-  PRINT @12  /* ~IWDII detected.~ */
-END
-
-COPY_EXISTING_REGEXP ~.*\.bcs$~ ~override~ 
-    SET x = 0 - 1
-    DECOMPILE_AND_PATCH BEGIN 
-	x = 0
-        REPLACE_EVALUATE ~\(RESPONSE #[0-9]+\)~ BEGIN
-                        x += 1
-                END ~~~~~\1
-        DisplayStringHead(Myself,~Running block %x% of %SOURCE_RES%.BCS~)~~~~~
-    END
-BUT_ONLY
-
-END

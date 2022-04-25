@@ -1,0 +1,92 @@
+// Support engine-specific display of strings
+ACTION_IF (GAME_IS ~bg1 totsc iwd how totlm iwd2 pst~) BEGIN
+  OUTER_SPRINT display_string ~DisplayString~
+END ELSE BEGIN
+  OUTER_SPRINT display_string ~DisplayStringHead~
+END
+
+
+// Patches the current BCS resource.
+DEFINE_PATCH_FUNCTION patch_script
+INT_VAR
+  patch_all = 0 // whether to patch everything, including NoAction() blocks
+BEGIN
+  DECOMPILE_AND_PATCH BEGIN
+    SET x = 0
+    REPLACE_EVALUATE
+      ~\(RESPONSE #[0-9]+[%WNL%]+\)[ %TAB%]+\([^ %TAB%%WNL%]+\)~
+      BEGIN
+        SPRINT debug ~~
+        PATCH_IF (patch_all != 0 OR NOT ~%MATCH2%~ STR_EQ ~NoAction()~) BEGIN
+          SET x += 1
+          SET strref = RESOLVE_STR_REF(@1000) // Running block %x% of %SOURCE_FILE%
+          SPRINT debug ~%display_string%(Myself,%strref%) %MATCH2%~
+        END
+      END
+      ~\1 %debug%~
+  END
+END
+
+
+// Print game information.
+DEFINE_ACTION_FUNCTION SHOW_GAME_INFO
+BEGIN
+  ACTION_IF (GAME_IS ~bg1 totsc~ OR
+             GAME_IS ~tutu tutu_totsc bg2 bgt tob~ AND NOT MOD_IS_INSTALLED ~setup-bg2fixpack.TP2~ "0") THEN BEGIN
+
+    ACTION_IF GAME_IS ~bg1 totsc~ THEN BEGIN
+      PRINT @15 /* ~BG1 detected.~ */
+    END
+
+    ACTION_IF GAME_IS ~tutu tutu_totsc~ THEN BEGIN
+      PRINT @3 /* ~Tutu without BG2 Fixpack detected.~ */
+    END
+
+    ACTION_IF GAME_IS ~bgt bg2 tob~ THEN BEGIN
+      PRINT @4 /* ~BG2/BGT without BG2 Fixpack detected.~ */
+    END
+
+  END ELSE BEGIN
+
+    ACTION_IF GAME_IS ~tutu tutu_totsc~ THEN BEGIN
+      PRINT @13 /* ~Tutu with BG2 Fixpack detected.~ */
+    END
+
+    ACTION_IF GAME_IS ~bgt bg2 tob~ THEN BEGIN
+      PRINT @14 /* ~BG2/BGT with BG2 Fixpack detected.~ */
+    END
+
+
+    ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~sod~) THEN BEGIN
+      ACTION_IF (GAME_INCLUDES ~sod~) BEGIN
+        PRINT @6 /* ~SoD detected.~ */
+      END ELSE BEGIN
+        PRINT @5 /* ~BG:EE detected.~ */
+      END
+    END
+
+    ACTION_IF GAME_IS ~eet~ THEN BEGIN
+      PRINT @7 /* ~EET detected.~ */
+    END
+
+    ACTION_IF GAME_IS ~iwdee~ THEN BEGIN
+      PRINT @8 /* ~IWD:EE detected.~ */
+    END
+
+    ACTION_IF GAME_IS ~pstee~ THEN BEGIN
+      PRINT @9  /* ~PST:EE detected.~ */
+    END
+
+    ACTION_IF GAME_IS ~iwd~ THEN BEGIN
+      PRINT @10 /* ~IWD detected.~ */
+    END
+
+    ACTION_IF GAME_IS ~pst~ THEN BEGIN
+      PRINT @11 /* ~PST detected.~ */
+    END
+
+    ACTION_IF GAME_IS ~iwd2~ THEN BEGIN
+      PRINT @12  /* ~IWDII detected.~ */
+    END
+  END
+END
