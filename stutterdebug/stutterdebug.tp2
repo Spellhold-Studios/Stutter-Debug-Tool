@@ -1,7 +1,7 @@
 BACKUP ~weidu_external/backup/stutterdebug~
 SUPPORT ~https://github.com/SpellholdStudios/Stutter_Debug_Tool~
 
-VERSION ~3.1~
+VERSION ~4.0~
 
 AUTO_TRA ~stutterdebug/tra/%s~
 
