@@ -53,6 +53,11 @@ Ascalon - tool pre-versions and debug guide (German)
 
 HISTORY
 
+Version 4.0:
+-Modernized, restructured and cleaned up code.
+-Added support for BG1.
+-Fixed support for IWD1, IWD2 and PST.
+
 Version 3.1:
 -typo correction.
 

@@ -1,3 +1,4 @@
+// -*- coding: us-ascii -*-
 @0   = ~Patching all scripts except NoAction() blocks - chose this when installing the first time (Installation could take a while!)~
 @1   = ~Patching all scripts and scriptblocks - this will take a while!~
 @2   = ~Stutter Debug Tool~
@@ -11,5 +12,8 @@
 @10  = ~IWD detected.~ 
 @11  = ~PST detected.~
 @12  = ~IWDII detected.~ 
-@13   = ~Tutu with BG2 Fixpack detected.~ 
-@14   = ~BG2/BGT with BG2 Fixpack detected.~
+@13  = ~Tutu with BG2 Fixpack detected.~ 
+@14  = ~BG2/BGT with BG2 Fixpack detected.~
+@15  = ~BG1 detected.~
+
+@100 = ~DLC Merger is required before mods can be installed on this game.~
