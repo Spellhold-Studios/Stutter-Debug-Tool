@@ -73,7 +73,12 @@ LANGUAGE ~Deutsch~
 LANGUAGE ~English~
          ~english~  
          ~stutterdebug/tra/english/setup.tra~ 
-         ~stutterdebug/tra/english/mod.tra~ 
+         ~stutterdebug/tra/english/mod.tra~
+
+LANGUAGE ~Francais~
+         ~french~
+         ~stutterdebug/tra/french/setup.tra~
+         ~stutterdebug/tra/french/mod.tra~
 
 
 BEGIN @0 /* ~Patching all scripts except NoAction() blocks - chose this when installing the first time (Installation could take a while!)~ */
