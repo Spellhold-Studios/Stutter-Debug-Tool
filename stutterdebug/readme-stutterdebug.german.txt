@@ -15,6 +15,21 @@ Zum Debuggen mit Moddingerfahrung installiert Ihr das Tool und verwendet die ang
 
 Das Tool funktioniert wie ein normales WeiDU-Mod und kann daher auch vollständig wieder deinstalliert werden. Es wird einfach auf das bestehende Spiel installiert. Dies gilt auch für EET: die EET-End.exe muss (bzw. soll auch) nicht danach ausgeführt werden.
 Das Tool ist nicht dazu gedacht, in eine normale Spielinstallation von Beginn an beinhaltet zu sein.
+Bitte beachten: Das Tool kann Cutscenes "hängen" lassen. Deinstalliert es, bevor Ihr mit dem Durchspielen fortfahrt.
+
+WIE MAN BEIm DEBUGGING VORGEHT
+(übersetzt mit DeepL)
+
+1. Wenn Sie auf ein Problem stoßen, das auf eine sich wiederholende Skriptaktion zurückzuführen sein könnte, speichern Sie Ihr Spiel.
+2. Installieren Sie das Stutter Debug Tool in Ihrem Spiel.
+3. Laden Sie den Spielstand und finden Sie heraus, welcher Skriptblock sich wiederholt. Möglicherweise werden in der Dialogbox viele Skripte erwähnt. Versuchen Sie herauszufinden, welches Skript zu dem Problem führt. 
+4. Die Ausgabe wird in etwa lauten: "Running block 54 of scriptxy.bcs". Notieren Sie sich dies.
+5. Schließen Sie das Spiel.
+6. Öffnen Sie Near Infinity (Link unten) und suchen Sie die bcs-Dateien. Öffnen Sie die erwähnte Skriptdatei ("scriptxy" in unserem Beispiel).
+7. Suchen Sie innerhalb des Skripts nach der Textzeile, die Sie notiert haben, z. B. "Running block 54 of scriptxy.bcs" (ohne die Anführungszeichen). Der Block, in dem dieser Text steht, ist der gesuchte Skriptblock.
+8. Ich betone es noch einmal: Die Nummer in "Running block 54 of scriptxy.bcs" ist NICHT die Zeilennummer. Sie bezieht sich auf den BLOCK, der diesen Text enthält.
+9. Kopieren Sie den gesamten Skriptblock und fragen Sie in den Foren nach Hilfe, wenn Sie Hilfe benötigen.
+10. Deinstallieren Sie das Stutter Debug Tool, um Ihr Spiel fortzusetzen.
 
 INSTALLATION
 
@@ -41,6 +56,9 @@ https://www.baldurs-gate.de/index.php?threads/stutter-debug-wie-wann-und-warum.4
 Near Infinity:
 https://github.com/Argent77/NearInfinity/releases
 
+DeepL Online Translator:
+https://www.deepl.com/translator
+
 
 CREDITS
 
@@ -49,6 +67,11 @@ Jarno Mikkola - tool pre-versions and debug guide
 Ascalon - tool pre-versions and debug guide (German)
 
 HISTORY
+
+Version 4.1:
+-French version added, by Selphira.
+-Added paragraph to the readme: HOW TO DEBUG A SCRIPT STUTTER.
+-Fix SoD detection for game info output.
 
 Version 4.0:
 -Modernized, restructured and cleaned up code.
