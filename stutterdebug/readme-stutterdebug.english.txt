@@ -17,6 +17,20 @@ For debugging as a modder, installing the tool will show ingame which scripts ar
 
 The tool functions like a normal WeiDU mod and can be installed and completely deinstalled like one. It is supposed to be installed directly onto your game. For EET, it can be installed after EET-end.
 The tool is not meant to be included into a normal playthrough.
+Please note: the tool can break cutscenes. Deinstall it before continuing your playthrough.
+
+HOW TO DEBUG A SCRIPT STUTTER
+
+1. If you encounter an issue that could be because of a repeating script action, save your game.
+2. Install the Stutter Debug Tool onto your game.
+3. Load the save and identify which script block of which script keeps repeating. There might be a lot of scripts being mentioned in the dialogue box, try to identify the one that leads to the issue. 
+4. The output will be something like "Running block 54 of scriptxy.bcs". Note this down.
+5. Close the game.
+6. Open Near Infinity (link below.) browse to the bcs files. Open the script file that was mentioned ("scriptxy" in our example).
+7. Inside the script, search for the textline you noted down, e.g. "Running block 54 of scriptxy.bcs" (without the quotion marks). The block with this text inside is the script block you are looking for.
+8. I'll stress this again: the number given in the "Running block 54 of scriptxy.bcs" is NOT the line number. It refers to the BLOCK containing this text.
+9. Copy the whole script block and ask in the forums for help with the stutter if you need help.
+10. Deinstall the Stutter Debug Tool to continue your playthrough.
 
 INSTALLATION
 
@@ -29,7 +43,7 @@ Uninstallation will take about a minute or two, maximum.
 
 COMPATIBILITY
 
-The Stutter Debug Tool should be compatible with all IE games. It is meant to be installed directly onto your finished game (also EET) for debugging purposes only. 
+The Stutter Debug Tool should be compatible with all IE games. It is meant to be installed directly onto your finished install (also EET) for debugging purposes only. 
 
 LINKS
 
@@ -52,6 +66,11 @@ Jarno Mikkola - tool pre-versions and debug guide
 Ascalon - tool pre-versions and debug guide (German)
 
 HISTORY
+
+Version 4.1:
+-French version added, by Selphira.
+-Added paragraph to the readme: HOW TO DEBUG A SCRIPT STUTTER.
+-Fix SoD detection for game info output.
 
 Version 4.0:
 -Modernized, restructured and cleaned up code.

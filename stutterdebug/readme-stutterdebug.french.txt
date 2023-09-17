@@ -17,6 +17,20 @@ Pour le débogage en tant que moddeur, l'installation de l'outil montrera en jeu
 
 L'outil fonctionne comme un mod WeiDU normal et peut être installé et désinstallé comme tel. Il est censé être installé directement sur votre jeu. Pour EET, il peut être installé après EET_End.
 L'outil n'est pas destiné à être inclus dans une partie normale.
+Please note: the tool can break cutscenes. Deinstall it before continuing your playthrough.
+
+HOW TO DEBUG A SCRIPT STUTTER
+
+1. If you encounter an issue that could be because of a repeating script action, save your game.
+2. Install the Stutter Debug Tool onto your game.
+3. Load the save and identify which script block of which script keeps repeating. There might be a lot of scripts being mentioned in the dialogue box, try to identify the one that leads to the issue. 
+4. The output will be something like "Running block 54 of scriptxy.bcs". Note this down.
+5. Close the game.
+6. Open Near Infinity (link below.) browse to the bcs files. Open the script file that was mentioned ("scriptxy" in our example).
+7. Inside the script, search for the textline you noted down, e.g. "Running block 54 of scriptxy.bcs" (without the quotion marks). The block with this text inside is the script block you are looking for.
+8. I'll stress this again: the number given in the "Running block 54 of scriptxy.bcs" is NOT the line number. It refers to the BLOCK containing this text.
+9. Copy the whole script block and ask in the forums for help with the stutter if you need help.
+10. Deinstall the Stutter Debug Tool to continue your playthrough.
 
 INSTALLATION
 
@@ -49,6 +63,11 @@ Jarno Mikkola - pré-versions de l'outil et guide de débogage
 Ascalon - pré-versions de l'outil et guide de débogage (allemand)
 
 HISTORIQUE
+
+Version 4.1:
+-French version added, by Selphira.
+-Added paragraph to the readme: HOW TO DEBUG A SCRIPT STUTTER.
+-Fix SoD detection for game info output.
 
 Version 4.0:
 -Modernized, restructured and cleaned up code.
