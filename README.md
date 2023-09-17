@@ -13,7 +13,7 @@ The Stutter Debug Tool will patch every script block with a text stating which s
 3. Load the save and identify which script block of which script keeps repeating. There might be a lot of scripts being mentioned in the dialogue box, try to identify the one that leads to the issue. 
 4. The output will be something like "Running block 54 of scriptxy.bcs". Note this down.
 5. Close the game.
-6. Open Near Infinity (link below.) browse to the bcs files. Open the script file that was mentioned ("scriptxy" in our example).
+6. Open Near Infinity. Browse to the bcs files. Open the script file that was mentioned ("scriptxy" in our example).
 7. Inside the script, search for the textline you noted down, e.g. "Running block 54 of scriptxy.bcs" (without the quotion marks). The block with this text inside is the script block you are looking for.
 8. I'll stress this again: the number given in the "Running block 54 of scriptxy.bcs" is NOT the line number. It refers to the BLOCK containing this text.
 9. Copy the whole script block and ask in the forums for help with the stutter if you need help.
