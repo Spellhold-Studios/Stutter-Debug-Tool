@@ -23,7 +23,7 @@ Why some badges update slowly: https://github.com/pujux/badge-it/issues/78
 
 # Stutter Debug Tool
 
-*A Spellhold Studios mod for Infinity Engine games*
+*A Spellhold Studios tool for Infinity Engine games*
 
 <br>
 
@@ -38,7 +38,7 @@ Stutter Debug Tool helps debug script malfunctions in the game. For example, if 
 
 The tool will patch every script block with a text stating which script and block number is running. The text is shown in the dialogue box in-game and right above the entity executing the script.
 
-*Please check the complete [Readme](https://spellhold-studios.github.io/readmes/stutter-debug-tool/readme-stutterdebug.english.txt) to learn more about this mod before installation.*
+*Please check the complete [Readme](https://spellhold-studios.github.io/readmes/stutter-debug-tool/readme-stutterdebug.english.txt) to learn more about this tool before installation.*
 
 ## How to debug a script stutter
 
