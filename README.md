@@ -57,13 +57,16 @@ The tool will patch every script block with a text stating which script and bloc
 
 <!-- double space after each credits **Heading** if you don't need lists -->
 
-**Authors**  
+**WeiDU coding**
+
+- jastey
+- Argent77
+
+**Contributors**  
 
 - the bigg &nbsp;&ndash;&nbsp; first tutorial for the stutter debug principle
 - Jarno Mikkola &nbsp;&ndash;&nbsp; tool pre-versions and debug guide
 - Ascalon &nbsp;&ndash;&nbsp; tool pre-versions and debug guide (German)
-- jastey &nbsp;&ndash;&nbsp; coding and maintenance (versions 1–4.1)
-- Argent77 &nbsp;&ndash;&nbsp; game compatibility and code improvements
 
 **Translators**  
 
