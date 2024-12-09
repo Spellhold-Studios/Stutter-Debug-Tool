@@ -70,4 +70,4 @@ The tool will patch every script block with a text stating which script and bloc
 
 **Translators**  
 
-- Selphira &nbsp;&ndash;&nbsp; French
+- **French**:&nbsp; Selphira
