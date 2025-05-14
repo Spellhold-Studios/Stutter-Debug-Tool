@@ -1,7 +1,6 @@
 [![Release](https://img.shields.io/github/v/release/Spellhold-Studios/Stutter-Debug-Tool?include_prereleases&color=%2392403a)](https://github.com/Spellhold-Studios/Stutter-Debug-Tool/releases/latest)
 [![Published](https://img.shields.io/github/release-date/Spellhold-Studios/Stutter-Debug-Tool?display_date=published_at&label=published&color=%2392403a)](https://github.com/Spellhold-Studios/Stutter-Debug-Tool/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/Spellhold-Studios/Stutter-Debug-Tool/total?color=%2392403a)](https://github.com/Spellhold-Studios/Stutter-Debug-Tool/releases)
-[![Views](https://badges.pufler.dev/visits/Spellhold-Studios/Stutter-Debug-Tool?label=views&color=%2392403a)](https://github.com/Spellhold-Studios/Stutter-Debug-Tool/releases)
 [![Platform](https://img.shields.io/badge/platform-Windows%20%a0%20macOS%20%a0%20Linux%20%a0%20-%2392403a)](https://github.com/Spellhold-Studios/Stutter-Debug-Tool/releases)
 [![Language](https://img.shields.io/badge/language-en%20%a0%20de%20%a0%20fr-%2392403a)](https://github.com/Spellhold-Studios/Stutter-Debug-Tool/releases)
 [![Games](https://img.shields.io/badge/games-BG1%20%a0%20BG2%20%a0%20BGT%20%a0%20BG%3AEE%20%a0%20SoD%20%a0%20BG2%3AEE%20%a0%20EET%20%a0%20IWD1%20%a0%20IWD2%20%a0%20IWD%3AEE%20%a0%20PST%20%a0%20PST%3AEE-%2392403a)](https://github.com/Spellhold-Studios/Stutter-Debug-Tool/releases)
