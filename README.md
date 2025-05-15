@@ -1,5 +1,5 @@
 [![Release](https://img.shields.io/github/v/release/Spellhold-Studios/Stutter-Debug-Tool?include_prereleases&color=%2392403a)](https://github.com/Spellhold-Studios/Stutter-Debug-Tool/releases/latest)
-[![Published](https://img.shields.io/github/release-date/Spellhold-Studios/Stutter-Debug-Tool?display_date=published_at&label=published&color=%2392403a)](https://github.com/Spellhold-Studios/Stutter-Debug-Tool/releases/latest)
+[![Published](https://img.shields.io/github/release-date-pre/Spellhold-Studios/Stutter-Debug-Tool?display_date=published_at&label=published&color=%2392403a)](https://github.com/Spellhold-Studios/Stutter-Debug-Tool/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/Spellhold-Studios/Stutter-Debug-Tool/total?color=%2392403a)](https://github.com/Spellhold-Studios/Stutter-Debug-Tool/releases)
 [![Platform](https://img.shields.io/badge/platform-Windows%20%a0%20macOS%20%a0%20Linux%20%a0%20-%2392403a)](https://github.com/Spellhold-Studios/Stutter-Debug-Tool/releases)
 [![Language](https://img.shields.io/badge/language-en%20%a0%20de%20%a0%20fr-%2392403a)](https://github.com/Spellhold-Studios/Stutter-Debug-Tool/releases)
