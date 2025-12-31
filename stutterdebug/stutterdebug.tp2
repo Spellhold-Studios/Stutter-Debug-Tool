@@ -66,13 +66,13 @@ END
 
 
 LANGUAGE ~Deutsch~
-         ~german~   
+         ~german~
          ~stutterdebug/tra/german/setup.tra~
          ~stutterdebug/tra/german/mod.tra~
 
 LANGUAGE ~English~
-         ~english~  
-         ~stutterdebug/tra/english/setup.tra~ 
+         ~english~
+         ~stutterdebug/tra/english/setup.tra~
          ~stutterdebug/tra/english/mod.tra~
 
 LANGUAGE ~Francais~
@@ -88,7 +88,7 @@ DESIGNATED 1
 
 LAF SHOW_GAME_INFO END
 
-COPY_EXISTING_REGEXP GLOB ~.+\.bcs~ ~override~
+COPY_EXISTING_REGEXP GLOB ~^.+\.bcs$~ ~override~
   TO_UPPER ~SOURCE_RES~
   PATCH_IF (NOT VARIABLE_IS_SET $broken_script(~%SOURCE_RES%~)) BEGIN
     LPF patch_script INT_VAR patch_all = 0 END
@@ -102,7 +102,7 @@ DESIGNATED 2
 
 LAF SHOW_GAME_INFO END
 
-COPY_EXISTING_REGEXP GLOB ~.+\.bcs~ ~override~ 
+COPY_EXISTING_REGEXP GLOB ~^.+\.bcs$~ ~override~
   TO_UPPER ~SOURCE_RES~
   PATCH_IF (NOT VARIABLE_IS_SET $broken_script(~%SOURCE_RES%~)) BEGIN
     LPF patch_script INT_VAR patch_all = 1 END
